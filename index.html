@@ -28,19 +28,32 @@
         <script src="js/rbush.min.js"></script>
         <script src="js/labelgun.min.js"></script>
         <script src="js/labels.js"></script>
-        <script src="data/ne_110m_admin_0_countries_lakes_0.js"></script>
-        <script src="data/ne_110m_populated_places_simple_1.js"></script>
+        <script src="data/ne_110m_admin_0_countries_lakes_1.js"></script>
+        <script src="data/ne_110m_populated_places_simple_2.js"></script>
         <script>
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[-90.71707375743134,-184.08149479],[113.56846522828656,188.07757738999996]]);
+        }).fitBounds([[-106.9233053939009,-189.0],[100.5684353939009,189.00000000000006]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
         var bounds_group = new L.featureGroup([]);
         function setBounds() {
         }
-        function pop_ne_110m_admin_0_countries_lakes_0(feature, layer) {
+        map.createPane('pane_OpenStreetMap_0');
+        map.getPane('pane_OpenStreetMap_0').style.zIndex = 400;
+        var layer_OpenStreetMap_0 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            pane: 'pane_OpenStreetMap_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 19
+        });
+        layer_OpenStreetMap_0;
+        map.addLayer(layer_OpenStreetMap_0);
+        function pop_ne_110m_admin_0_countries_lakes_1(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['featurecla'] !== null ? autolinker.link(feature.properties['featurecla'].toLocaleString()) : '') + '</td>\
@@ -550,9 +563,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_ne_110m_admin_0_countries_lakes_0_0() {
+        function style_ne_110m_admin_0_countries_lakes_1_0() {
             return {
-                pane: 'pane_ne_110m_admin_0_countries_lakes_0',
+                pane: 'pane_ne_110m_admin_0_countries_lakes_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -561,25 +574,25 @@
                 weight: 1.0, 
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(145,82,45,1.0)',
+                fillColor: 'rgba(125,139,143,1.0)',
                 interactive: true,
             }
         }
-        map.createPane('pane_ne_110m_admin_0_countries_lakes_0');
-        map.getPane('pane_ne_110m_admin_0_countries_lakes_0').style.zIndex = 400;
-        map.getPane('pane_ne_110m_admin_0_countries_lakes_0').style['mix-blend-mode'] = 'normal';
-        var layer_ne_110m_admin_0_countries_lakes_0 = new L.geoJson(json_ne_110m_admin_0_countries_lakes_0, {
+        map.createPane('pane_ne_110m_admin_0_countries_lakes_1');
+        map.getPane('pane_ne_110m_admin_0_countries_lakes_1').style.zIndex = 401;
+        map.getPane('pane_ne_110m_admin_0_countries_lakes_1').style['mix-blend-mode'] = 'normal';
+        var layer_ne_110m_admin_0_countries_lakes_1 = new L.geoJson(json_ne_110m_admin_0_countries_lakes_1, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_ne_110m_admin_0_countries_lakes_0',
-            layerName: 'layer_ne_110m_admin_0_countries_lakes_0',
-            pane: 'pane_ne_110m_admin_0_countries_lakes_0',
-            onEachFeature: pop_ne_110m_admin_0_countries_lakes_0,
-            style: style_ne_110m_admin_0_countries_lakes_0_0,
+            dataVar: 'json_ne_110m_admin_0_countries_lakes_1',
+            layerName: 'layer_ne_110m_admin_0_countries_lakes_1',
+            pane: 'pane_ne_110m_admin_0_countries_lakes_1',
+            onEachFeature: pop_ne_110m_admin_0_countries_lakes_1,
+            style: style_ne_110m_admin_0_countries_lakes_1_0,
         });
-        bounds_group.addLayer(layer_ne_110m_admin_0_countries_lakes_0);
-        map.addLayer(layer_ne_110m_admin_0_countries_lakes_0);
-        function pop_ne_110m_populated_places_simple_1(feature, layer) {
+        bounds_group.addLayer(layer_ne_110m_admin_0_countries_lakes_1);
+        map.addLayer(layer_ne_110m_admin_0_countries_lakes_1);
+        function pop_ne_110m_populated_places_simple_2(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['scalerank'] !== null ? autolinker.link(feature.properties['scalerank'].toLocaleString()) : '') + '</td>\
@@ -594,7 +607,7 @@
                         <td colspan="2">' + (feature.properties['featurecla'] !== null ? autolinker.link(feature.properties['featurecla'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2"><strong>name</strong><br />' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td colspan="2">' + (feature.properties['namepar'] !== null ? autolinker.link(feature.properties['namepar'].toLocaleString()) : '') + '</td>\
@@ -678,9 +691,9 @@
             layer.bindPopup(popupContent, {maxHeight: 400});
         }
 
-        function style_ne_110m_populated_places_simple_1_0() {
+        function style_ne_110m_populated_places_simple_2_0() {
             return {
-                pane: 'pane_ne_110m_populated_places_simple_1',
+                pane: 'pane_ne_110m_populated_places_simple_2',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -690,30 +703,32 @@
                 weight: 1,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(190,178,151,1.0)',
+                fillColor: 'rgba(145,82,45,1.0)',
                 interactive: true,
             }
         }
-        map.createPane('pane_ne_110m_populated_places_simple_1');
-        map.getPane('pane_ne_110m_populated_places_simple_1').style.zIndex = 401;
-        map.getPane('pane_ne_110m_populated_places_simple_1').style['mix-blend-mode'] = 'normal';
-        var layer_ne_110m_populated_places_simple_1 = new L.geoJson(json_ne_110m_populated_places_simple_1, {
+        map.createPane('pane_ne_110m_populated_places_simple_2');
+        map.getPane('pane_ne_110m_populated_places_simple_2').style.zIndex = 402;
+        map.getPane('pane_ne_110m_populated_places_simple_2').style['mix-blend-mode'] = 'normal';
+        var layer_ne_110m_populated_places_simple_2 = new L.geoJson(json_ne_110m_populated_places_simple_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_ne_110m_populated_places_simple_1',
-            layerName: 'layer_ne_110m_populated_places_simple_1',
-            pane: 'pane_ne_110m_populated_places_simple_1',
-            onEachFeature: pop_ne_110m_populated_places_simple_1,
+            dataVar: 'json_ne_110m_populated_places_simple_2',
+            layerName: 'layer_ne_110m_populated_places_simple_2',
+            pane: 'pane_ne_110m_populated_places_simple_2',
+            onEachFeature: pop_ne_110m_populated_places_simple_2,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_ne_110m_populated_places_simple_1_0(feature));
+                return L.circleMarker(latlng, style_ne_110m_populated_places_simple_2_0(feature));
             },
         });
-        bounds_group.addLayer(layer_ne_110m_populated_places_simple_1);
-        map.addLayer(layer_ne_110m_populated_places_simple_1);
+        bounds_group.addLayer(layer_ne_110m_populated_places_simple_2);
+        map.addLayer(layer_ne_110m_populated_places_simple_2);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/ne_110m_populated_places_simple_2.png" /> ne_110m_populated_places_simple': layer_ne_110m_populated_places_simple_2,'<img src="legend/ne_110m_admin_0_countries_lakes_1.png" /> ne_110m_admin_0_countries_lakes': layer_ne_110m_admin_0_countries_lakes_1,"OpenStreetMap": layer_OpenStreetMap_0,},{collapsed:false}).addTo(map);
         setBounds();
         </script>
     </body>
